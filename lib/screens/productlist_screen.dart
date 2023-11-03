@@ -34,7 +34,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     super.initState();
   }
 
-  void getProductList() async {
+  void getProductList() async{
     inProgress = true;
     setState(() {});
 
