@@ -1,8 +1,11 @@
 import 'package:crud_api/screens/add_new_product_screen.dart';
+import 'package:crud_api/screens/productlist_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -13,35 +16,29 @@ class ProductItem extends StatelessWidget {
         });
       },
       leading: Image.network(
-        'https://images.pexels.com/photos/841228/pexels-photo-841228.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        product.image,
         width: 80,),
-      title: const Text('Product Name'),
-      subtitle: const Column(
+      title: Text(product.productName),
+      subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text('Product Code'),
-              SizedBox(width: 24,),
-              Text('Total Price'),
-            ],
-          ),
-          Text('Product Description'),
+          Text(product.productCode),
+          Text('Total Price : ${product.totalPrice}'),
         ],
       ),
-      trailing: Text('\$120.00'),
+      trailing: Text('\$${product.unitPrice}'),
     );
   }
 
   AlertDialog productAlertDialog(BuildContext context) {
     return AlertDialog(
-          title: Text('Select Action'),
+          title: const Text('Select Action'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text('Edit'),
-                leading: Icon(Icons.edit),
+                title: const Text('Edit'),
+                leading: const Icon(Icons.edit),
                 onTap: (){
                   Navigator.pop(context);
                   Navigator.push(
