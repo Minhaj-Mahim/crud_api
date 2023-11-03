@@ -62,23 +62,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
         }
       }
     }
-
-    // if (response.statusCode == 200) {
-    //   final Map<String, dynamic> responseData = jsonDecode(response.body);
-    //   if (responseData['status'] == 'success') {
-    //     for (Map<String, dynamic> productJson in responseData['data']) {
-    //       productList.add(Product(
-    //         productJson['_id'],
-    //         productJson['ProductName'],
-    //         productJson['ProductCode'],
-    //         productJson['Img'],
-    //         productJson['UnitPrice'],
-    //         productJson['Qty'],
-    //         productJson['TotalPrice'],
-    //       ));
-    //     }
-    //   }
-    // }
     inProgress = false;
     print(productList.length);
     setState(() {});
