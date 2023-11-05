@@ -80,6 +80,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
         _totalPriceTEController.text.trim(),
         _quantityTEController.text.trim(),
     );
+
     // final Map<String, String> inputMap = {
     //   "Img": _imageTEController.text.trim(),
     //   "ProductCode": _productCodeTEController.text.trim(),
@@ -90,8 +91,6 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
     // };
     // print(inputMap);
 
-
-
     final Response response = await post(
         Uri.parse('https://crud.teamrabbil.com/api/v1/UpdateProduct/${widget.product!.id}'),
         headers: {
@@ -99,8 +98,6 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
         },
         body: jsonEncode(product.toJson()));
 
-    print(response.request?.url);
-    print(response.statusCode);
     if (response.statusCode == 200) {
       _priceTEController.clear();
       _totalPriceTEController.clear();
@@ -109,13 +106,13 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
       _imageTEController.clear();
       _productCodeTEController.clear();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Product has been updated'),
         ),
       );
     } else if (response.statusCode == 400) {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Product Code should be unique'),
           ),
       );
